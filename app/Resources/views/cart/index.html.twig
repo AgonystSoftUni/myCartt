@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Carts list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order id</th>
+                {% if(is_granted('ROLE_ADMIN')) %}
+                <th>User</th>
+                {% endif %}
+                <th>Status</th>
+                <th>Creation Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cart in carts %}
+            <tr>
+                <td><a href="{{ path('cart_show', { 'id': cart.id }) }}">{{ cart.id }}</a></td>
+                {% if(is_granted('ROLE_ADMIN')) %}
+                <td>{{ cart.user.username }}</td>
+                {% endif %}
+                <td>{{ cart.status }}</td>
+                <td>{% if cart.createdAt %}{{ cart.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <a class="btn btn-default" href="{{ path('cart_show', { 'id': cart.id }) }}">show</a>
+                    <a class="btn btn-default" href="{{ path('cart_edit', { 'id': cart.id }) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

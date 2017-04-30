@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
+        <h1><a class="btn btn-danger" href="{{ path('promotion_index') }}">Back to the list</a> Promotion creation</h1>
+
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input class="btn btn-primary" type="submit" value="Create" />
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}

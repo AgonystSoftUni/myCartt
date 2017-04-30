@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1><a class="btn btn-default" href="{{ path('cart_index') }}">Back to the list</a>Order id: {{ cart.id }} Order Status: {{ cart.status }}<small class="pull-right">{{  cart.createdAt|date('Y-m-d H:i:s') }}</small></h1>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>decription</th>
+                <th>price</th>
+                <th>quantity</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{ dump(cart.products[0]) }}
+            {#{% for product in cart.products %}
+                {{ product.id }}
+                <td>{{ item.product.id }}</td>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.product.description }}</td>
+                <td>{{ item.product.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td><a class="btn btn-danger" href="">remove</a></td>
+            {% endfor %}#}
+        </tbody>
+    </table>
+{% endblock %}
